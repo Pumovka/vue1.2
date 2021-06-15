@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Todo list app</title>
+</head>
+
+<body>
+<div id="app">
+
+    <div class="modal" v-show="showModal" style="display: none;">
+        <div class="modal-body">
+                <span class="modal-title">
+                    Enter a new task
+                </span>
+            <div class="modal-input-wrapper">
+                <input v-model="userTask" class="modal-input" type="text" placeholder="Enter a new task">
+            </div>
+            <div class="modal-controls">
+                <button @click="toggleModal">Close</button>
+                <button @click="addItem">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Todo</h1>
+
+            <div class="search-box">
+                <input class="search" type="text" placeholder="Search">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="list">
+            <div class="list-item" v-for="item in list">
+                <div class="list-item-name">{{ item }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div @click="toggleModal" class="btn-add">+</div>
+
+
+</div>
+
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>

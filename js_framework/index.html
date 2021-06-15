@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--<div id="app">-->
+<!--    {{ message }}-->
+<!--</div>-->
+
+<!--<div id="app-2">-->
+<!--  <span v-bind:title="message">-->
+<!--    Наведи на меня курсор на пару секунд,-->
+<!--    чтобы увидеть динамически связанное значение title!-->
+<!--  </span>-->
+<!--</div>-->
+
+<div id="app">
+
+    {{message}}
+    <br>
+    {{title}}
+    <span v-if="seen">Сейчас меня видно</span>
+    <span v-else="seen">Не видно тот блок</span>
+    <br>
+    <br>
+    <ul>
+        <li v-for="ii in articles">{{ii}}</li>
+    </ul>
+    <button @dbclick="firstMethod">Это кнопка</button>
+    <div>
+        <input type="text" v-model="userText">
+        <div>
+            <b>Вы ввели:</b> {{userText}}
+        </div>
+
+    </div>
+
+<button @click = "showText">Показать наш текст</button>
+    <div v-if = "showed">
+        Это секретное сообщение
+    </div>
+    <div v-show = "showed">
+        Это секретное сообщение
+    </div>
+</div>
+<script src="vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
