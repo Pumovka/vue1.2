@@ -1,14 +1,21 @@
 let app = new Vue({
     el: '#app',
     data: {
-        list: [
-            "Задача 1",
-            "Задача 2",
-            "Задача 3"
-        ],
+        list: [],
         showModal: false,
-        userTask: ""
+        userTask: "",
+        search: ""
     },
+    mounted() {
+        this.list = JSON.parse(localStorage.getItem('list')) || []
+    }, // когда приложение загрузилось - вызывается маунтед
+    computed: {
+        filteredList() {
+           if(this.search === "")
+               return  this.list
+            return  this.list.filter((el) =>el.includes(this.search))
+        }
+    },// вычислительные свойства
     methods: {
 
         // openModal() {
@@ -22,13 +29,18 @@ let app = new Vue({
         },
         addItem() {
 // alert(this.userTask)
-            if(this.userTask == ""){
+            if (this.userTask == "") {
                 alert("Введите значение")
                 return
             }
             this.list.push(this.userTask)
             this.userTask = ""
             this.toggleModal()
+            this.save()
+        },
+        save() {
+            localStorage.setItem("list", JSON.stringify(this.list))
         }
     }
 })
+
