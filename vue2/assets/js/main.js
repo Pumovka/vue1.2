@@ -1,13 +1,12 @@
 let app = new Vue({
     el: '#app',
     data: {
-        list: [
-            "Задача 1",
-            "Задача 2",
-            "Задача 3"
-        ],
+        list: [],
         showModal: false,
         userTask: ""
+    },
+    mounted(){
+        this.list = JSON.parse(localStorage.getItem('list')) || []
     },
     methods: {
 
@@ -29,6 +28,11 @@ let app = new Vue({
             this.list.push(this.userTask)
             this.userTask = ""
             this.toggleModal()
+            this.save()
+        },
+        save(){
+            localStorage.setItem("list", JSON.stringify(this.list))
         }
     }
 })
+
